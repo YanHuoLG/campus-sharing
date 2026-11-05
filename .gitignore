@@ -1,0 +1,13 @@
+/target/
+/.tools/
+/.m2/
+/.idea/
+*.iml
+/uploads/
+*.log
+.env
+.env.*
+!.env.*.example
+/src/main/resources/application-local.yml
+*.md
+!README.md

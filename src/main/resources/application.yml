@@ -1,0 +1,49 @@
+server:
+  address: ${SERVER_ADDRESS:127.0.0.1}
+  port: ${SERVER_PORT:8080}
+  servlet:
+    session:
+      timeout: 30m
+      tracking-modes: cookie
+      cookie:
+        http-only: true
+        same-site: lax
+        secure: ${SESSION_COOKIE_SECURE:false}
+  error:
+    include-message: never
+    include-stacktrace: never
+spring:
+  application:
+    name: campus-sharing
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/campus_sharing?useUnicode=true&characterEncoding=UTF-8&connectionTimeZone=Asia/Shanghai}
+    username: ${DB_USERNAME:campus_app}
+    password: ${DB_PASSWORD:}
+    hikari:
+      connection-timeout: 3000
+      maximum-pool-size: 10
+      initialization-fail-timeout: -1
+  sql:
+    init:
+      mode: never
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 11MB
+  jackson:
+    time-zone: Asia/Shanghai
+    deserialization:
+      fail-on-unknown-properties: true
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+  global-config:
+    banner: false
+app:
+  upload-dir: ${UPLOAD_DIR:./uploads}
+  handover:
+    ttl-seconds: ${HANDOVER_TTL_SECONDS:86400}
+    max-attempts: ${HANDOVER_MAX_ATTEMPTS:5}
+  reservations:
+    expiry-enabled: true
+    expiry-scan-ms: 60000

@@ -1,0 +1,15 @@
+### Requires the application and a configured database
+GET http://localhost:8080/api/health
+Accept: application/json
+
+### Three seeded categories
+GET http://localhost:8080/api/categories
+Accept: application/json
+
+### Expected: 401 without a login session; see user-api.md for registration/login examples
+GET http://localhost:8080/api/users/me
+Accept: application/json
+
+### Obtain a CSRF token and retain the response cookie before POST/PATCH requests
+GET http://localhost:8080/api/auth/csrf
+Accept: application/json
